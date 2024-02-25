@@ -10,7 +10,6 @@
         perbandingan akan mengembalikan hasil yang sama setiap fungsi dipanggil.
     3. Reflexive
           perbandingan compareFn(a, a) harus selalu sama dg 0 
-
     4. AntiSimetrik 
         jika compareFn(a, b) dan compareFn(b, a) keduanya harus memberikan hasil berlawanan.
     5.  Transitive
@@ -63,8 +62,119 @@ let num = [3, 1, 5, ,2, 4] //saat menggunakan sparse element/jarang kode tidak b
 num = num.filter(value=> value !== undefined);
 
 function compareFn2(a, b){
-    return b-a
+    return a-b;
 }
 num.sort(compareFn2);
 console.log("08.", num)
 
+const strArray = ["Blue", "Humpback", "Beluga"];
+const numArray = [40, 1, 5, 200];
+const numericStrArr = ["89", "9", "700"];
+const mixNumericArr = ["80", "9", "700", 40, 1, 5, 200]
+
+console.log("09.", strArray.join());
+console.log("10.", strArray.sort());
+console.log("11.", numArray.join());
+console.log("12.", numArray.sort());
+console.log("13.", numArray.sort(compareFn2));
+console.log("14.", numArray.sort(compareFn2));
+console.log("15.", numericStrArr.join());
+console.log("16.", numericStrArr.sort());
+console.log("17.", numericStrArr.sort(compareFn2));
+console.log("18.", mixNumericArr.join());
+console.log("19.", mixNumericArr.sort());
+console.log("20.", mixNumericArr.sort(compareFn2));
+
+/*  SORTING ARRAY OBJEK 
+    array object dapat menggunakan sort selama properti value-nya adlh number.
+*/
+const item = [
+    { name: "Edward", value: 21},
+    { name: "sharpe", value : 37},
+    { name: "And", value: 45},
+    { name: "The", value: "-12"},
+    { name: "Magnetic", value: 13},
+    { name: "Zeroes", value: 37},
+];
+item.sort((a, b) => a.value - b.value); 
+let result = item.sort(compareFn);
+console.log("21.", result);
+
+/*  SORTING non-ASCII CHARACTER
+    untuk karakter khusus(e, é, è, a, ä, etc.) gunakan string.prototype.localeCompare()..fungsi ini dapat membandingkan karakter tsb dalam urutan yg diinginkan.  
+*/
+const nonAscii = ["réservé", "premier", "communiqué", "café", "adieu", "éclair"];
+console.log("22.", nonAscii.sort((a, b) => a.localeCompare(b)));
+
+/*  SORTING WITH MAP
+    -   sorting dg menggunakan compareFn dapat menyebabkan beban kerja memory dan proccesor berat terutama saat melibatkan banyak elemen.
+    -  Untuk mengatasi masalah ini, pendekatan yang lebih efisien adalah dengan menggunakan metode map() untuk pengurutan. Ide dasarnya adalah:
+    01. Melintasi array sekali untuk mengekstrak nilai-nilai aktual yang digunakan untuk pengurutan ke dalam sebuah array sementara.
+    02. Mengurutkan array sementara tersebut.
+    03. Melintasi array sementara untuk mencapai urutan yang benar. 
+*/
+let data = ["sierra", "charlie", "zulu", "golf", "romeo"];
+const mapped = data.map((v, i) => {
+    return { i, value:v};
+});
+mapped.sort((a, b) => {
+    return a.value < b.value ? -1 : a.value > b.value ? 1 : 0
+})
+const hasil = mapped.map((v) => data[v.i]);
+console.log("23.", hasil);
+
+/*  SORT MENGEMBALIKAN REFERENSI PADA ARRAY YANG SAMA
+    -metode sort  yang mengembalikan ke referensi array orisinal, sehingga mutating/melakukan perubahan pada hasil juga akan merubah array asli.    
+    -jika tidak ingin merubah referensi asli gunakan operator spread atau metode map, 
+    untuk mengkopi dangkal/shallow copy array asli
+*/
+const nums2 =[3, 1, 4, 1, 5];
+const sorted = nums2.sort((a, b) => a-b);
+sorted[0] = 10;
+console.log("24.", sorted);
+console.log("25.", nums2);
+
+const nums3 = [3, 1, 4, 1, 5];
+const sorted2 = [...nums3].sort((a, b) => a-b);
+sorted2[0] = 10;  
+console.log("26.", sorted2);
+console.log("27.", nums3);
+
+/*  SORTED STABILITY 
+    -berikut contoh selain grade yang diurutkan nama siswa juga diurutkan aswell , meskipun
+    huruf kapital, masing2 berbeda.
+*/
+const students = [
+    { name: "Alex", grade : 15},
+    { name : "Devlin", grade : 15 },
+    { name: "eagle", grade: 13 },
+    { name: "sam", grade: 14 },
+]
+const result2 = students.sort((a, b) => a.grade - b.grade);
+console.log("28.", result2);
+
+/* SORTING WITH non-WELL-formed comparator
+    jika fungsi pembanding tidak memenuhi sifat pembanding yg baik: 
+    murni, stabil, asimetrik etc, maka fungsi tidak terdefinisi dg baik.
+    fungsi akan lebih cenderung tidak konsisten.
+*/
+const arr = [3, 1, 4, 1, 5, 9];
+const compareFn3 = (a, b) => a>b ? 1: 0;
+const compareFn4 = (a, b) => a>b ? -1: 0;
+console.log("29.", arr.sort(compareFn3));
+console.log("30.", arr.sort(compareFn4));
+
+/*  USING SORT ON SPARSE ARRAYS
+    sparse/empty slot akan dipindah keakhir array 
+*/
+console.log("31", ["a", "c", ,"b"].sort());
+console.log("32", [, undefined, "a", "b"].sort());
+
+//  CALLING SORT ON NON-ARRAY OBJECT
+const arrayLike = {
+    unrelated: "foo",
+    O: 5,
+    2: 4,
+    length: 3
+}
+console.log("33.", Array.prototype.sort.call(arrayLike));

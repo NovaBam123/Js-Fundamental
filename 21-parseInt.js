@@ -1,3 +1,23 @@
+/*
+    -   Number parseInt() adalah metode yang mengurai(parsing) string integer berdasar radix.basis tertentu
+    -   misal String "123" akan menjadi 123 
+    -   beberapa basis: 
+        * basis 16-Hexadecimal 
+        * basis 8-oktal
+        * basis 2-binary   
+    -   Jika string tidak dapat diurai akan menghasilkan NaN
+    -   Number parseInt() dengan object global window terdapat perbedaan
+        dimana Number dapat diakses tanpa perlu merujuk ke objek number
+    Syntax: 
+    Number.parseInt(string);
+    Number.parseInt(string, radix)     
+*/
+
+//mengurai string 10 dalam basis 2(binary)
+const binaryString = "10";
+const parse = Number.parseInt(binaryString, 2);
+console.log("01a.", parse);    
+
 console.log("01.", parseInt("123"));
 console.log("02.", parseInt("123", 10));
 console.log("03.", parseInt("   123")); //spasi diabaikan
@@ -17,10 +37,10 @@ console.log("09.", parseInt("123", 1)); //2-36 lebih besar atau kecil dari batas
 // console.log(parseInt("FXX123", 16));
 // console.log(parseInt("1111", 2));
 // console.log(parseInt("15 * 3", 10));
-// console.log(parseInt("15e2", 10));
+// console.log(parseInt("15e2", 10));                                       
 // console.log(parseInt("15px", 10));
 // console.log(parseInt("12", 13));
-console.log(parseInt("543", 11));
-console.log(parseInt(null, 10));
-console.log(parseInt(null, 36));
-console.log(parseInt(undefined, 36));
+console.log("10.", parseInt("543", 11));   
+console.log("11.", parseInt(null, 10)); 
+console.log("12.", parseInt(null, 36)); 
+console.log("13.", parseInt(undefined, 36)); 
