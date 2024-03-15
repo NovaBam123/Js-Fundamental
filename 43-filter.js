@@ -20,7 +20,7 @@ console.log("02." , filtered);
 //MENYARING SEMUA BIL.PRIMA DI SEBUAH ARRAY 
 const array = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 function isPrime(num){
-    for(let i = 2; num > i; i++){
+    for(let i = 2; i <= Math.sqrt(num) ; i++){
         if(num% i === 0){
             return false; // % modulo: sisa bagi hasil
         }
@@ -31,7 +31,7 @@ console.log("03.", array.filter(isPrime));
 
 function isPrime2(num){
     let i = 2;
-    while(num > i){
+    while(i < num){
         if(num%i ===0){
             return false;
         }
@@ -108,3 +108,15 @@ const greetIDs = names
     });
     console.log("10.", greetIDs);
 
+//FILTER PADA SPARSE ARRAYS (filter akan melewatkan array kosong)
+console.log("11.", [1, undefined ,3].filter((x) => x=== undefined));
+console.log("12.", [1, ,5].filter((x)=> x!== 2));
+
+//FILTER PADA ARRAYLIKE OBJECT
+const arrayLike = { 
+    0: "a",
+    1: "b",
+    2: "c",
+    length : 3
+};
+console.log("13.", Array.prototype.filter.call(arrayLike, (x) => x <= "c"));;
