@@ -1,3 +1,10 @@
+/* Menambahkan satu atau lebih elemen baru ke akhir array dan mengembalikan panjang array yang baru.
+    Syntax:
+    - push()
+    - push(element1)
+    - push(el1, el2)
+    - push(el1, el2, ...elN)
+*/
 const animals = ["pigs", "goats", "sheep"];
 const count = animals.push("cows");
 

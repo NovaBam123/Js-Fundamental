@@ -1,6 +1,10 @@
-//slice = akan menjadi array baru, array asli tidak berubah! 
-//slice jika minus misal -1 = maka -1 + -1 = -2 
-//slice [-4, 2] lihat data array-nya..
+/*  Berfungsi untuk membuat salinan dangkal(Shallow Copy) dari sebuah array ke array baru.
+    Syntax: 
+    
+    slice = akan menjadi array baru, array asli tidak berubah! 
+    slice jika minus misal -1 = maka -1 + -1 = -2 
+    slice [-4, 2] lihat data array-nya..
+*/
 
 const arrayLike = {
   length: 3,

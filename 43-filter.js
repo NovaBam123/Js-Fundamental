@@ -1,4 +1,5 @@
 /* 
+    -metode iterasi pada array dg memanggil fungsi callback yang diberikan sekali untuk setiap elemen dalam array dan membangun sebuah array baru yang memenuhi kriteria.
     -merupakan metode iterasi utk membuat salinan dangkal sebuah array yang telah disaring dan ini tidak berlaku pada array kosong.
     -fungsi mengembalikan nilai yang truthy atau falsy berdasar nilai elemen yg disaring.
     -jika elemen yg di test tidak lulus tes(tersaring semua) maka akan mengembalikan array kosong.
@@ -20,7 +21,7 @@ console.log("02." , filtered);
 //MENYARING SEMUA BIL.PRIMA DI SEBUAH ARRAY 
 const array = [-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 function isPrime(num){
-    for(let i = 2; i <= Math.sqrt(num) ; i++){
+    for(let i = 2; i <= Math.sqrt(num) ; i++){ //akar kuadrat
         if(num% i === 0){
             return false; // % modulo: sisa bagi hasil
         }

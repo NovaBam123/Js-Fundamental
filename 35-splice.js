@@ -1,5 +1,6 @@
 /*
     - splice: bisa mengganti value yang ada, atau menambah value baru pada array.
+    - metode ini cocok untuk menghapus atau menambah elemen suatu array dan merubah array aslinya.
     syntax: 
     - splice(start)
     - splice(start, deleteCount, item1)

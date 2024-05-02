@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop dan Iterasi</title>
+</head>
+<body>
+    <form name="selectForm">
+        <label for="musicTypes"> Choose some music types, then click the button below</label>
+        <select id="musicTypes" name="musicTypes" multiple>
+            <option selected>R&B</option>
+            <option>Jazz</option>
+            <option>Blues</option>
+            <option>New Age</option>
+            <option>Classical</option>
+            <option>Opera</option>
+        </select>
+        <button id="btn" type="buttpn">How many are selected?</button>
+    </form>
+    
+<script>
+    function countSelected(selectObject){
+        let numSelected= 0
+        for(let i= 0; i< selectObject.options.length; i++){
+            if(selectObject.options[i].selected){
+                numSelected++
+            }
+        }
+        return numSelected;
+    }
+    const btn= document.getElementById("btn");
+    btn.addEventListener("click", ()=> {
+        const musicType = document.selectForm.musicTypes;
+        console.log(`You have selected ${countSelected(musicTypes)} option.`);
+        })    
+</script>    
+</body>
+</html>

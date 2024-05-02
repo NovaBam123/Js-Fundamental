@@ -1,4 +1,6 @@
-/*
+/*  
+    Metode yg digunakan untuk mengembalikan potongan(slice) dari string asli. (ekstraks Array)
+    -potongan dimulai dari indeks yang ditentukan("start") hingga akhir string/array. namun jika end ditentukan maka end tidak termasuk dalam potongan.
     - shallow copy selain concat() dan splice()..bertujuan mengekstrak value array. 
     - jika minus diakhir..index ke-(-) tsb tidak termasuk.
     syntax :

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button{
+        cursor: pointer;
+    }
+</style>
+<body>
+   <div>
+    <h1 id= "header">Hello John</h1>
+    <button id="btn">change name</button>
+    <button id="btn2">default</button>
+   </div> 
+
+<script>
+// const updateEl = id=> isi=> document.querySelector(`#${id}`).textContent = isi;
+// const myUpdate = updateEl("header");
+// const def = ()=> updateEl("header")("Hello John")
+// document.getElementById("btn").onclick= change => myUpdate("Hello Andi");
+// document.getElementById("btn2").onclick= def;
+
+// const updateEl2 = function(name){
+//     return function(){
+//         document.querySelector("h1").textContent= name+ "";
+//     }
+// }
+// let changeName= updateEl2("Hello Budi");
+// let defName = updateEl2("Hello John") ;
+// document.getElementById("btn").onclick= changeName;
+// document.getElementById("btn2").onclick= defName;
+
+const updateEl3 = (name) => { 
+    document.querySelector("h1").textContent = name + ""};    
+let changeName2 = ()=> updateEl3("Hello Cindy");
+let defName2 = ()=> updateEl3("Hello John")()
+document.getElementById("btn").onclick = changeName2;
+document.getElementById("btn2").onclick = defName2;
+
+</script>   
+</body>
+</html>

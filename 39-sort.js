@@ -45,7 +45,7 @@ console.log("03. dg compareFn", numbers);
 numbers.sort((a, b) => a-b);
 numbers2.sort((a, b) => b-a)
 console.log("04. dg callback", numbers);
-console.log("05.", numbers2);
+console.log("05. callback:", numbers2);
 
 //ternary operators
 let natoPhonetic= ["sierra", "charlie", "zulu", "golf", "romeo"]; 

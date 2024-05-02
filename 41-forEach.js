@@ -16,7 +16,7 @@ array1.forEach((e)=>console.log('01.', e));
     -    paramater yg diterima o/ fungsi callback yg dilewatkan pada metode forEach:
     a.   element -> paramater yg sdg diproses, dan untuk diakses
     b.   index -> memungkinkan mengetahu posisi relatif element dlm array
-    c.   array -> referensi setiap element pada array/walauun ini jrng digunakan 
+    c.   array -> referensi setiap element pada array/walaupun ini jrng digunakan 
     -   Perbedaan antara forEach dan map:
     metode Map menghasilkan/mengembalikan hasil array baru sedangkan forEach tidak.
 */
@@ -51,7 +51,7 @@ arr.forEach((e) => {
 
 //KONDISIONAL STATEMENT PADA FOREACH
 arr.forEach((e, i) => {
-    if(e !==2 && e !==4){
+    if(e%2!== 0){
         console.log("10.", e)
     }
 })

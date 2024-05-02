@@ -15,7 +15,7 @@
 
 //mengurai string 10 dalam basis 2(binary)
 const binaryString = "10";
-const parse = Number.parseInt(binaryString, 2);
+const parse = Number.parseInt("10", 2);
 console.log("01a.", parse);    
 
 console.log("01.", parseInt("123"));

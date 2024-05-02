@@ -1,6 +1,6 @@
 /* 
-    metode instance array yang mengeksekusi fungsi callback yang diberikan pd setiap elamen secara berurutan, hasil akhirnya berupa satu nilai tunggal.
-    Syntax: 
+    metode instance array yang digunakan untuk mengurangi array menjadi nilai tunggal dengan menetapkan sebuah fungsi reducer(pengurang) pd setiap element array dari kiri ke kanan, utk menghasilkan satu nilai akhir.
+        Syntax: 
     - reduce(callbackFn)
     - reduce(callbackFn, initialValue)
     Sifat metode reduce: 
@@ -12,17 +12,49 @@
     4. array: parameter thd array dimana metode reduce diberlakukan.
     -   InitialValue: Sebuah nilai yg digunakan untuk menginisiasi "accumulator" pertama kali fungsi callbackFn dipanggil. 
 */
+//  01. MENGGABUNGKAN NILAI ARRAY UNTUK MENJUMLAHKAN-NYA MENGHITUNG RATA2 ATAU LAINNYA
+let numbers = [1, 2, 3, 4, 5]
+let totNum= numbers.reduce((acc, curr)=> acc+ curr)
+console.log("1a.", totNum);
+
+//  02. MENGHITUNG RATA-RATA DARI SEMUA ELEMENT ARRAY
+let avg= numbers.reduce((acc, curr, idx, arr)=> { 
+    acc+= curr;
+    if(idx=== arr.length- 1){
+        return acc/arr.length
+    } else{
+        return acc
+    }
+}, 0)
+console.log("1b.", avg);
+
+//  03. MENGHITUNG JUMLAH KEMUNCULAN DALAM ELEMEN ARRAY
+let friends= ["Alice", "Bob", "Alice", "Charlie", "Bob", "Alice"];
+let friendCount= friends.reduce((acc, curr)=> {
+    acc[curr]= (acc[curr] || 0)+ 1
+    return acc;
+}, {})
+console.log("1c.", friendCount);
 
 const array1 = [1, 2, 3, 4];
 const sum = array1.reduce((accumulator, currentValue) => accumulator + currentValue, 5);
 console.log("01.", sum);
 
-const result = array1.reduce((accumulator, currentValue) => {
-    return accumulator + currentValue;
-}, 0); // 0 sebagai nilai awal dari akumulator jika tidak disertakan maka el pertama array akan menjadi nilai awal "accumulator". 
+
+const result = array1.reduce((accumulator, currentValue) => accumulator + currentValue, 0); // 0 sebagai nilai awal dari akumulator jika tidak disertakan maka el pertama array akan menjadi nilai awal "accumulator". 
 console.log("02.", result);
 
-const getMax = (a, b) => Math.max(a, b);
+// const getMax = (a, b) => Math.max(a, b);
+function getMax(a, b){
+    return Math.max(a, b)
+}// fungsi ini hanya untuk melihat nilai terbesar pada 2 angka untuk yang lebih dari 2 angka kita gunakan restparameter
+
+function getMax2(...numbers){
+    return Math.max(...numbers)
+}
+let myNumbers= [10, 5, 20, 30]
+console.log("02a.", getMax2(...myNumbers)); //gunakan spread operator
+
 //getMax dipanggil ulang untuk setiap element array.
 console.log("03.", [1, 100].reduce(getMax, 50));
 
@@ -40,7 +72,6 @@ console.log("07.", [].reduce(getMax, 10));
 
 //type error reduce array tanpa initial value akan tampil dlm konsole 
 // console.log("08.", [].reduce(getMax));
-
 
 //CARA KERJA REDUCE TANPA ADA PARAMETER INITIAL VALUE
 const array = [15, 16, 17, 18, 19];
@@ -64,19 +95,19 @@ array.reduce(reducer2, 10);
 //PENJUMLAHAN DLM OBJEK ARRAY, DIMANA INITIAL VALUE WAJIB DISERTAKAN
 const objects = [{ x: 1 }, { x: 2}, { x : 3}];
 const jumlah = objects.reduce((accumulator, currentValue) => 
-accumulator + currentValue.x, 0);
+accumulator + currentValue.x, 4);
 console.log("10.", jumlah);
 
 /*
     FUNGSI PIPA BERURUT :
     -   mengambil urutan fungsi dan mengembalikan fungsi baru.
-    -   ketika fungsi dipanggil dalam sebuah argumen ( dalam metode) urutan fungsi akan dipanggil secara berurutan dengan setiap fungsi akan menerima nilai hasil dari fungsi sebelumnya atau "hasil dari setiap fungsi dalam pipa akan digunakan sebagai argumen untuk fungsi berikutnya dalam urutan tsb."
-    -   pemrograman fungsional ini bertjuan untuk menggabungkan serangkaian operasi yg dilakukan secara berurutan. 
+    -   ketika fungsi dipanggil dalam sebuah argumen (dalam metode) urutan fungsi akan dipanggil secara berurutan dengan setiap fungsi akan menerima nilai hasil dari fungsi sebelumnya atau "hasil dari setiap fungsi dalam pipa akan digunakan sebagai argumen untuk fungsi berikutnya dalam urutan tsb."
+    -   pemrograman fungsional ini bertujuan untuk menggabungkan serangkaian operasi yg dilakukan secara berurutan. 
     -   kode akan mudah terbaca dan lebih bersih dg memisahkan setiap langkah perubahan ke dalam fungsi terpisah. 
 */
 const pipe = 
-    (...functions) => 
-    (initialValue) => functions.reduce((acc, fn) => fn(acc), initialValue);
+    (...args) => 
+    (initialValue) => args.reduce((acc, fn) => fn(acc), initialValue);
 const double = (x) => 2* x;
 const triple = (x) => 3* x;
 const quadruple = (x) => 4* x;
@@ -97,21 +128,23 @@ console.log("14.", multiply4(10));//20, 20*3= 60, 60*4 = 240
                 return fungsi.reduce((acc, val) => val(acc), input)
     const myPipe = pipe2(double2, addFive, square, double2, addFive, square); 
 */
-function foo(...args){ //=> rest parameter
+// Rest Parameters
+function foo(...args){ 
     console.log("15.", args)
 }
 foo(1, 2, 3);
 
+// Spread Operator
 const arr = [1, 2, 3];
 const arr2 = [...arr, 4, 5];
-console.log("16.", arr2);
+console.log("16.", arr2); 
 
 function double2(x) { return x * 2};
 function addFive(x) { return x + 5 };
 function square(x) { return x * x };
-function pipe2(...fungsi){ // rest parameter
+function pipe2(...fungsi){ 
     return function(input){
-        return fungsi.reduce((acc, val) => val(acc), input)
+        return fungsi.reduce((acc, val) => val(acc), input)   
         /*
             -   acc sebagai akumulator -> nilai hasil dari fungsi sblmn-ya
             -   val adalah fungsi berikutnya dalam urutan 

@@ -1,6 +1,9 @@
-/*Syntax
--join(separator)
--karakter join : 
+/*  Berfungsi untuk menggabungkan semua element dalam array     menjadi satu string. pemisah sebagai argument dapat digunakan, jika tidak default-nya setiap element array akan digabung tanpa pemisah.  
+    - Syntax:
+    join();
+    join(separator);
+
+    -karakter join : 
     01. jika null atau undefined akan menjadi string kosong
     02. hubungan dengan metode string
     03. pada array bersarang..pemisah koma digunakan secara default
@@ -11,7 +14,9 @@ const arr1 = ["1", null, undefined, "Four"]
 console.log("01.", element.join()); //Fire,Air,Water
 console.log("02.", element.join(""));//FireAirWater
 console.log("03.", element.join("-"));//Fire-Air-Water
-console.log("04.", arr1.join());
+
+// Null, undifined menjadi sparse array.
+console.log("04.", arr1.join());//1,,,Four
 
 const matrix = [
     [1, 2, 3],

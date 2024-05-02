@@ -1,3 +1,12 @@
+/*  - Digunakan dalam tipe data number, dan memformat angka     
+    menjadi string dengan jumlah digit desimal tertentu setelah koma.
+    - Digunakan untuk membulatkan angka dalam jumlah digit desimal tertentu setelah koma.
+    Sytax: 
+    toFixed()
+    toFixed(digits)
+    - digits yang akan menjadi output, jika argument ini tidak disediakan maka akan default-nya nol digit. 
+*/
+
 function financial(x) {
   return Number.parseFloat(x).toFixed(2);
 }
@@ -15,7 +24,6 @@ console.log(typeof result1)
 console.log(typeof result2)
 console.log(typeof -2.34.toFixed(1));
 console.log(typeof (-2.34).toFixed(1)); //predensi tanda kurung lebih tinggi dati tanda minus
-
 
 // try {
 //   let result = num.toFixed(-1)
