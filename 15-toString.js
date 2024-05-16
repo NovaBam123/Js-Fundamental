@@ -25,7 +25,7 @@ const dog2 = new Dog2("Goofy");
 Dog2.prototype.toString = () => { 
     return `${this.name}`; 
 }
-console.log("06.", dog2.toString()); //undifined krn karena menggunakan arrow function
+console.log("06.", dog2.toString()); //undifined krn menggunakan arrow function
 
 function Dog3(name) {
     this.name = name;

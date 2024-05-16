@@ -1,3 +1,7 @@
+/*
+    Syntax:
+    toString()
+*/
 const num = 118;
 const convertNum = num.toString()
 const sum = convertNum + 11
