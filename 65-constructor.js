@@ -39,7 +39,7 @@ const parent= new Parent("John")
 const child= new Child("John junior", 10)
 console.log("02.", parent.name);
 console.log("03.", child.age);
-console.log("04.", child instanceof Child);
+console.log("04.", child instanceof Parent);
 
 /*  default constructor dan class bawaan dari js;
     kelas induk yang dapat digunakan untuk kita extends:

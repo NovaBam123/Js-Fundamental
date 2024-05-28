@@ -1,4 +1,4 @@
-/* 
+ /* 
   Iterasi terhadap enumarable properti sebuah objek.
   SNYTAX: 
   -for(variable in obj){

@@ -118,7 +118,6 @@ console.log("06.", DB.getConnection());
 
 class Animal {
     kingdom = "Animalia";
-    
     makeSound() {
       console.log("Some generic sound");
     }
@@ -126,13 +125,11 @@ class Animal {
   
   class Dog extends Animal {
     // Tidak ada constructor atau kata kunci super() di sini
-    
     bark() {
       console.log("Woof!");
     }
   }
-  
-  // Membuat instance dari subclass
+    // Membuat instance dari subclass
   const myDog = new Dog();
   
   // Mengakses properti statik dan metode dari superclass

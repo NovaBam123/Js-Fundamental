@@ -62,7 +62,7 @@ const user2= {
     object[namaProperty]
     -ini digunakan untuk mengakses properti secara dinamis pada saat runtime yang tidak mungkin dilakukan oleh notasi titik.
     Tiga kasus penggunaan Notasi Bracket:
-    1.  Akses Properti Dinamis:
+    1.  Akses Properti Dinamis (Computed Property Names):
         ketikan nama properti ditentukan pada saat runtime atau disimpan dalam sebuah variable.
     2.  Karakter Khusus: (spasi, kata kunci js)
         Nama properti mengandung karakter khusus atau kata kunci dari js.

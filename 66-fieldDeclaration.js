@@ -10,7 +10,7 @@
     }
     -super dalam class subclass tidak dapat digunakan untuk mengakses instance property dari superclass secara langsung, 
 */
-// 2 Cara subclass untuk mengakses instance field yang ada di superclass, namun kebalikan-nya untuk instance superclass ia tidak akan dapat mengakses instance dari superclass
+// 2 Cara subclass untuk mengakses instance field yang ada di superclass, namun kebalikan-nya untuk instance superclass ia tidak akan dapat mengakses instance dari subclass
 class Base{
     baseField= "Battlefield";
     anotherBaseField= this.baseField
