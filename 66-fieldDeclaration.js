@@ -90,7 +90,7 @@ console.log("14.", bInstance.b);// undefined (kode dievaluasi dari atas ke bawah
 console.log("15.", bInstance.d);
 
 /* ketika field dideclaration:
-    - field tsb tsb dg method [[DefineOwnProperty]]() dibalik layar yg dasarnya sama dg Object.defineProperty(obj, target); perbedaan keduanya, hal yg pertama tidak dpt diakses oleh kode, dan bagian dari engine V8
+    - field tsb dg method [[DefineOwnProperty]]() dibalik layar yg dasarnya sama dg Object.defineProperty(obj, target); perbedaan keduanya, hal yg pertama tidak dpt diakses oleh kode, dan bagian dari engine V8
     - karena hal tsb maka field dec tidak akan memicu dipanggilnya setter dalam superClass
     * sedangkan this dalam constructor melakukan perubahan prop tanpa method tsb sehingga akan memicu pemanggilan setter dalam superclass yang kita buat.
 */

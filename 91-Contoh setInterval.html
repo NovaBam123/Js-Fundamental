@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contoh setInterval</title>
+</head>
+<body>
+    <button class="start">Start</button>
+
+<script>
+    const button= document.querySelector(".start")
+    let colorID;
+    button.setAttribute("style", `
+        font-size: 18px;
+        padding: 5px 10px;
+        cursor: pointer;
+        border: 1px solid lightgray;
+        border-radius: 5px;`     
+    ) 
+    function randomColor(){
+        return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+    }
+    
+    button.addEventListener("click", (e)=> {
+        e.target.classList.toggle("start");
+        e.target.classList.toggle("stop");
+        if(e.target.classList.contains("start")){
+            e.target.textContent= "Stop";
+            colorID= setInterval(()=>{
+            document.body.style.backgroundColor= randomColor()
+            }, 1000)
+        }else{
+            e.target.textContent= "Start"
+            clearInterval(colorID)
+        }
+    })
+</script>
+</body>
+</html>
